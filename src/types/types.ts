@@ -34,15 +34,6 @@ type Review = {
   date: string;
 }
 
-type Reviews = Review[];
-
-type CityLocationDefault = {
-  title: string;
-  lat: number;
-  lng: number;
-  zoom: number;
-};
-
 type AuthData = {
   login: string;
   password: string;

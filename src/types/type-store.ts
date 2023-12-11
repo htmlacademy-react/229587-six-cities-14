@@ -65,10 +65,6 @@ type Comment = {
   rating: number;
   }
 
-type StateSortOffers = {
-  sortOffers: OfferCard[];
-}
-
 type StateFilterOffers = {
   filterOffers: OfferCard[];
 }

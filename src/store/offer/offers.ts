@@ -1,8 +1,9 @@
 import type {OfferCard} from '../../types/type-store';
-import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 import {fetchOffersAction} from '../../services/thunk/fetch-offers';
 import {Sort} from '../../const';
+import {sendFavoriteOffer} from '../../services/api-actions.ts';
 
 type StateOffers = {
   offers: OfferCard[] | null;
@@ -53,9 +54,19 @@ const offersSlice = createSlice({
       .addCase(fetchOffersAction.rejected, (state, action) => {
         state.error = action.error.message || 'Unknown error';
         state.loadingStatus = false;
+      })
+      .addCase(sendFavoriteOffer.fulfilled, (state, action) => {
+        const offerId = action.payload.id;
+        const offerIndex = state.offers?.findIndex(({ id }) => id === offerId) ?? -1;
+        if (offerIndex > -1) {
+          state.offers!.splice(offerIndex, 1, action.payload);
+        }
+        const changeOfferIndex = state.changeOffers.findIndex(({ id }) => id === offerId);
+        if (changeOfferIndex > -1) {
+          state.changeOffers.splice(changeOfferIndex, 1, action.payload);
+        }
       });
   }
 });
 
 export {offersSlice};
-
