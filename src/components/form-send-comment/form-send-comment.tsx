@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import type {FormEvent} from 'react';
-import {DEFAULT_VALUE_NULL, MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH} from '../../const';
+import {DEFAULT_VALUE_NULL, CommentLength} from '../../const';
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store';
 import {RatingComponent} from '../rating-component/rating-component';
 import {sendComment} from '../../services/thunk/send-comment';
@@ -16,7 +16,7 @@ function FormSendCommentMemo ({id}: PropsFormComment): JSX.Element {
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState(DEFAULT_VALUE_NULL);
   const [button, setButton] = useState(false);
-  const isCommentLengthValid = (comment.length >= MIN_COMMENT_LENGTH && comment.length <= MAX_COMMENT_LENGTH);
+  const isCommentLengthValid = (comment.length >= CommentLength.Min && comment.length <= CommentLength.Max);
   const isLoading = useAppSelector((state) => state.loadComment.isLoading);
   const isValid = !(isCommentLengthValid && rating !== DEFAULT_VALUE_NULL && (isLoading === null || true));
   const errorMessage = useAppSelector((state) => state.loadComment.error);
@@ -69,7 +69,7 @@ function FormSendCommentMemo ({id}: PropsFormComment): JSX.Element {
           To submit review please make sure to set {''}
           <span className="reviews__star">rating</span> and describe
           your stay with at least {''}
-          <b className="reviews__text-amount">{MIN_COMMENT_LENGTH} characters</b>.
+          <b className="reviews__text-amount">{CommentLength.Min} characters</b>.
         </p>
         <button
           className="reviews__submit form__submit button"

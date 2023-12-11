@@ -65,10 +65,6 @@ type Comment = {
   rating: number;
   }
 
-type StateSortOffers = {
-  sortOffers: OfferCard[];
-}
-
 type StateFilterOffers = {
   filterOffers: OfferCard[];
 }
@@ -106,7 +102,6 @@ type StateComment = {
 export type {
   State,
   AppDispatch,
-  StateSortOffers,
   StateFilterOffers,
   StateLoadOffers,
   StateAuth,

@@ -1,7 +1,7 @@
 import {ChangeEvent} from 'react';
 import React from 'react';
 import {useAppSelector} from '../../hooks/use-store';
-import {OPTIONS} from '../../const';
+import {Options} from '../../const';
 
 type RatingComponentProps = {
   rating: number;
@@ -16,7 +16,7 @@ function RatingComponent ({rating, onSetRating: setRating}: RatingComponentProps
 
   return (
     <div className="reviews__rating-form form__rating">
-      {OPTIONS.map((option) => (
+      {Options.map((option) => (
         < React.Fragment key={option.value}>
           <input
             className="form__rating-input visually-hidden"

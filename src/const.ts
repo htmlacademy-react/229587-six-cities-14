@@ -9,8 +9,11 @@ const MAX_LENGTH_OFFER_PHOTO = 6;
 const MAX_LENGTH_POINT_NEAR = 3;
 const ENDING = 2;
 const RENAME_WORD = 1;
-const MIN_COMMENT_LENGTH = 50;
-const MAX_COMMENT_LENGTH = 300;
+
+export const CommentLength = {
+  Min: 50,
+  Max: 300
+} as const;
 
 export const City = {
   Paris: 'Paris',
@@ -21,7 +24,7 @@ export const City = {
   Dusseldorf: 'Dusseldorf',
 } as const;
 
-export const CITIES_FOR_FILTER = [
+export const CitiesForFilter = [
   'Paris',
   'Cologne',
   'Brussels',
@@ -72,7 +75,7 @@ export const CURRENT_ICON = {
   iconAnchor: [13.5, 39],
 };
 
-export const MONTH_NAMES = [
+export const MonthNames = [
   'January',
   'February',
   'March',
@@ -87,7 +90,7 @@ export const MONTH_NAMES = [
   'December'
 ];
 
-export const OPTIONS = [
+export const Options = [
   {label: 'perfect', value: 5},
   {label: 'good', value: 4},
   {label: 'not bad', value: 3},
@@ -192,8 +195,6 @@ export {
   AuthorizationStatus,
   ApiRoute,
   TitleDescription,
-  MIN_COMMENT_LENGTH,
-  MAX_COMMENT_LENGTH,
   MAX_LENGTH_REVIEW,
   DEFAULT_CITY,
   BASE_URL,

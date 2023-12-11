@@ -1,4 +1,4 @@
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus, DEFAULT_VALUE_NULL} from '../../const';
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store';
 import {dataUserSlice} from '../../store/data-user';
@@ -13,7 +13,7 @@ function ProfileMemo () {
   const dispatch = useAppDispatch();
   const offers = useAppSelector((state) => state.offersFavorite.offers);
   const navigate = useNavigate();
-  const currentPathname = window.location.pathname;
+  const currentPathname = useLocation().pathname;
 
   function handleClickButtonOut () {
 
