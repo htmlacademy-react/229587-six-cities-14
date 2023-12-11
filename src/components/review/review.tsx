@@ -1,4 +1,4 @@
-import {MonthNames} from '../../const';
+import {monthNames} from '../../const';
 import type {Review} from '../../types/types';
 import type {Comment} from '../../types/type-store';
 import {getRating} from '../../utils';
@@ -10,7 +10,7 @@ type ReviewProps = {
 function Review ({reviewProps}: ReviewProps) {
   const inputDate = reviewProps.date;
   const date = new Date(inputDate);
-  const month = MonthNames[date.getMonth()];
+  const month = monthNames[date.getMonth()];
   const year = date.getFullYear();
   const formattedDate = `${month} ${year}`;
 

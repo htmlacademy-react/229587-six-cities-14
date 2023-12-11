@@ -10,12 +10,15 @@ import {useAppDispatch} from '../../hooks/use-store';
 import {fetchOffersAction} from '../../services/thunk/fetch-offers';
 import {checkAuthAction} from '../../services/thunk/check-auth-action';
 import {RedirectFavoriteComponent} from '../redirect-favorite/redirect-favorite.tsx';
+import {useEffect} from 'react';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  dispatch(fetchOffersAction());
-  dispatch(checkAuthAction());
+  useEffect(() => {
+    dispatch(fetchOffersAction());
+    dispatch(checkAuthAction());
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

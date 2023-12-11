@@ -18,9 +18,9 @@ const initialState: StateOffers = {
   offers: null,
   loadingStatus: null,
   error: null,
-  offersFilter:[],
+  offersFilter: [],
   changeOffers: [],
-  statusSort : Sort.Popular
+  statusSort: Sort.Popular
 };
 
 const offersSlice = createSlice({
@@ -30,13 +30,13 @@ const offersSlice = createSlice({
     addOfferList(state, action: PayloadAction<OfferCard[]>) {
       state.offers = action.payload;
     },
-    addOffersFilter(state, action: PayloadAction<OfferCard[]>){
+    addOffersFilter(state, action: PayloadAction<OfferCard[]>) {
       state.offersFilter = action.payload;
     },
-    changeOffers(state, action: PayloadAction<OfferCard[]>){
+    changeOffers(state, action: PayloadAction<OfferCard[]>) {
       state.changeOffers = action.payload;
     },
-    addStatusSort(state, action: PayloadAction<string>){
+    addStatusSort(state, action: PayloadAction<string>) {
       state.statusSort = action.payload;
     },
   },
@@ -57,13 +57,9 @@ const offersSlice = createSlice({
       })
       .addCase(sendFavoriteOffer.fulfilled, (state, action) => {
         const offerId = action.payload.id;
-        const offerIndex = state.offers?.findIndex(({ id }) => id === offerId) ?? -1;
+        const offerIndex = state.offers?.findIndex(({id}) => id === offerId) ?? -1;
         if (offerIndex > -1) {
           state.offers!.splice(offerIndex, 1, action.payload);
-        }
-        const changeOfferIndex = state.changeOffers.findIndex(({ id }) => id === offerId);
-        if (changeOfferIndex > -1) {
-          state.changeOffers.splice(changeOfferIndex, 1, action.payload);
         }
       });
   }
