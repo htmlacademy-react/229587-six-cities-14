@@ -102,7 +102,6 @@ type StateComment = {
 export type {
   State,
   AppDispatch,
-  StateSortOffers,
   StateFilterOffers,
   StateLoadOffers,
   StateAuth,

@@ -51,8 +51,6 @@ export type {
   PointOfferLocation,
   IconToMap,
   Review,
-  Reviews,
-  CityLocationDefault,
   AuthData,
   UserDataLogin
 };
