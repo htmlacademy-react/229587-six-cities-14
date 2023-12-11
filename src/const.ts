@@ -24,7 +24,7 @@ export const City = {
   Dusseldorf: 'Dusseldorf',
 } as const;
 
-export const CitiesForFilter = [
+export const citiesForFilter = [
   'Paris',
   'Cologne',
   'Brussels',
@@ -75,7 +75,7 @@ export const CURRENT_ICON = {
   iconAnchor: [13.5, 39],
 };
 
-export const MonthNames = [
+export const monthNames = [
   'January',
   'February',
   'March',

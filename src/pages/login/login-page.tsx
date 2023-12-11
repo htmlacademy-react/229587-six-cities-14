@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Logotype} from '../../components/logotype/logotype';
 import {useDocumentTitle} from '../../hooks/use-document-title';
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store';
@@ -6,7 +6,6 @@ import {AppRoute, AuthorizationStatus, City, DEFAULT_CITY, SettingLogoHeader} fr
 import {filterCitySlice} from '../../store/filter-city';
 import {Link} from 'react-router-dom';
 import {loginAction} from '../../services/thunk/login-action';
-import {useEffect} from 'react';
 import {fetchOffersAction} from '../../services/thunk/fetch-offers';
 import '../../pages/login/styleLogin.css';
 import type {AuthData} from '../../types/types';
@@ -25,16 +24,15 @@ function LoginPage ({title: title} : LoginPagesProps) : JSX.Element | string {
   const checkEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const city = useAppSelector((state) => state.filterCity.city);
   const dispatch = useAppDispatch();
-  const cityArray = Object.values(City);
   const error = useAppSelector((state) => state.authorizationStatus.error);
   const authStatus = useAppSelector((state) => state.authorizationStatus.authStatus);
 
   useEffect(() => {
+    const cityArray = Object.values(City);
     const randomCity = cityArray[Math.floor(Math.random() * cityArray.length)];
     dispatch(filterCitySlice.actions.changeCity(randomCity));
     dispatch(authStatusSlice.actions.addErrorStatus(null));
-    dispatch(checkAuthAction());
-  }, [cityArray, dispatch]);
+  }, [dispatch]);
 
   const authData: AuthData = {
     password: inputPassword,

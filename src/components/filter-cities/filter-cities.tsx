@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {CitiesForFilter} from '../../const';
+import {citiesForFilter} from '../../const';
 import {ButtonFilterComponent} from '../button-filter-component/button-filter-component';
 
 function FilterCitiesMemo () {
@@ -8,7 +8,7 @@ function FilterCitiesMemo () {
     <div className="tabs" data-testid ='filterCities'>
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {CitiesForFilter.map((city) => <ButtonFilterComponent city={city} key={city}/>)}
+          {citiesForFilter.map((city) => <ButtonFilterComponent city={city} key={city}/>)}
         </ul>
       </section>
     </div>
